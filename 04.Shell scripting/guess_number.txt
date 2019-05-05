@@ -1,0 +1,19 @@
+Ќапишете shell script guess, ко€то си намисл€ число, което вие тр€бва да познате. 
+#¬ зависимост от ваши€ отговор, програмата тр€бва да ви казва "надолу" или "нагоре", докато не познаете числото.
+#  огато го познаете, програмата да ви казва с колко опита сте успели.
+
+#!/bin/bash
+read Цp УChoose number:Ф number
+counter=0
+guess=-1
+while [[ $guess Цne $number ]]; do
+counter=$(($counter +1 ))
+read Цp УEnter guess Ф guess
+if [[ $guess Цgt $number]]; then
+   echo ФYour guess is higherФ
+elif [[ $guess Цlt $number ]]; then
+   echo УYour guess is lowerФ
+fi
+done
+
+echo УRIGHT! Guessed in $counter timesФ

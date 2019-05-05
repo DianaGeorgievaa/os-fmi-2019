@@ -1,0 +1,23 @@
+#Имате компилируем (a.k.a няма синтактични грешки) source file на езика C. 
+#Напишете shell script, който да покзва колко е дълбоко най-дълбокото nest-ване 
+
+#!/bin/bash
+
+currentCount=0
+maxCount= -1
+read file
+
+while read line;do
+if [[ "${line}" == "{" ]]; then
+    currentCount=$(($currentCount + 1))
+else
+    currentCount=$(($currentCount - 1))
+fi
+
+if [[ "${currentCount}" -ge "${maxCount}" ]]; then
+    maxCount="${currentCount}"
+fi
+
+done <<(grep -o "[{}]" "${file}")
+
+echo "${maxCount}"

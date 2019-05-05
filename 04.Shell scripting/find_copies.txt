@@ -1,0 +1,24 @@
+#ƒа се напише shell скрипт, който приема файл и директори€. 
+#—криптът провер€ва в подадената директори€ и нейните под-директории дали съществува копие на подадени€ файл 
+#и отпечатва имената на намерените копи€, ако съществуват такива.
+
+#!/bin/bash
+if [[ ! Цd $1 ]]; then
+   echo У$1 is not a directoryФ
+   exit 1;
+fi 
+
+if[[ ! Цf $2 ]]; then
+   echo У$2 is not a fileФ
+fi
+
+hashSum=$(echo $(md5sum $2) | tr ЦsФФ |cut ЦdУ Ф Цf1
+
+while read line;do
+currentHashSum=$(echo $(md5sum $line))| tr Цs УФ| cut Цd Цf1
+
+if [[ $currentHashSum == hashSum]]; then
+    echo $line
+fi
+done <<(find $dir Цmindepth 1 Цtype f)
+

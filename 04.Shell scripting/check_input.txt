@@ -1,0 +1,14 @@
+#Да се напише shell скрипт, който проверява дали подаденият му параметър се състои само от букви и цифри.
+
+#!/bin/bash
+echo “Enter some text here:”
+if [[! $1]]; then
+   echo “Missing argument”
+   exit 1
+fi
+
+if[[ !$1=~[^a-zA-Z0-9]+ ]]; then
+   echo “Your input contains only letters and digits”
+else
+   echo “Your input does not contain only letters and digits”
+fi
