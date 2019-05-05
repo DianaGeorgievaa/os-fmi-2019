@@ -1,14 +1,12 @@
-#Äà ñå íàïèøå shell ñêğèïò, êîéòî ïğîâåğÿâà äàëè ïîäàäåíèÿò ìó ïàğàìåòúğ ñå ñúñòîè ñàìî îò áóêâè è öèôğè.
-
 #!/bin/bash
-echo “Enter some text here:”
+echo â€œEnter some text here:â€
 if [[! $1]]; then
-   echo “Missing argument”
+   echo â€œMissing argumentâ€
    exit 1
 fi
 
 if[[ !$1=~[^a-zA-Z0-9]+ ]]; then
-   echo “Your input contains only letters and digits”
+   echo â€œYour input contains only letters and digitsâ€
 else
-   echo “Your input does not contain only letters and digits”
+   echo â€œYour input does not contain only letters and digitsâ€
 fi
