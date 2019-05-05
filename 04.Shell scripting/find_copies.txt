@@ -1,24 +1,21 @@
-#Да се напише shell скрипт, който приема файл и директория. 
-#Скриптът проверява в подадената директория и нейните под-директории дали съществува копие на подадения файл 
-#и отпечатва имената на намерените копия, ако съществуват такива.
-
 #!/bin/bash
-if [[ ! –d $1 ]]; then
-   echo “$1 is not a directory”
+
+if [[ ! вЂ“d $1 ]]; then
+   echo вЂњ$1 is not a directoryвЂќ
    exit 1;
 fi 
 
-if[[ ! –f $2 ]]; then
-   echo “$2 is not a file”
+if[[ ! вЂ“f $2 ]]; then
+   echo вЂњ$2 is not a fileвЂќ
 fi
 
-hashSum=$(echo $(md5sum $2) | tr –s”” |cut –d“ ” –f1
+hashSum=$(echo $(md5sum $2) | tr вЂ“sвЂќвЂќ |cut вЂ“dвЂњ вЂќ вЂ“f1
 
 while read line;do
-currentHashSum=$(echo $(md5sum $line))| tr –s “”| cut –d –f1
+currentHashSum=$(echo $(md5sum $line))| tr вЂ“s вЂњвЂќ| cut вЂ“d вЂ“f1
 
 if [[ $currentHashSum == hashSum]]; then
     echo $line
 fi
-done <<(find $dir –mindepth 1 –type f)
+done <<(find $dir вЂ“mindepth 1 вЂ“type f)
 
