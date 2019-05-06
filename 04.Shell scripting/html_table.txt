@@ -1,32 +1,32 @@
 #!/bin/bash
 
-echo “<table>”
-   echo ”<th>First Name</th>”
-   echo ”<th>Last Name</th>”
-   echo ”<th>Specialty</th>”
-   echo ”<th>Course</th>”
-   echo ”<th>Group</th>”
-   echo “</tr>”
+echo â€œ<table>â€
+   echo â€<th>First Name</th>â€
+   echo â€<th>Last Name</th>â€
+   echo â€<th>Specialty</th>â€
+   echo â€<th>Course</th>â€
+   echo â€<th>Group</th>â€
+   echo â€œ</tr>â€
 
 while read line; do
-   echo “<tr>”
-   echo “<td>$(echo $line | cut –d: -f1 | cut –c 2-6)</td>” 
-   echo “<td>$(echo $line | cut –d: -f5 | cut –d “ ” –f1)</td>” 
-   echo “<td>$(echo $line | cut –d: -f5 | cut –d”” –f2)</td>”
+   echo â€œ<tr>â€
+   echo â€œ<td>$(echo $line | cut â€“d: -f1 | cut â€“c 2-6)</td>â€ 
+   echo â€œ<td>$(echo $line | cut â€“d: -f5 | cut â€“d â€œ â€ â€“f1)</td>â€ 
+   echo â€œ<td>$(echo $line | cut â€“d: -f5 | cut â€“dâ€â€ â€“f2)</td>â€
 if [[ $line =~ SI* ]]; then
-   echo “<td>SI</td>”
+   echo â€œ<td>SI</td>â€
 else
-   echo “<td>KN</td>”
+   echo â€œ<td>KN</td>â€
 fi
 
 if [[ $line =~ [o-9], || $line=~[0-9][a-z] ]]; then
-   echo “<td>$(echo $line | cut –d: -f5 | cut –d”,”-f3| cut –c 2)</td>”
-   echo “<td>$(echo $line | cut –d: -f5 | cut –d”,”-f4| cut –c 2)</td>”
+   echo â€œ<td>$(echo $line | cut â€“d: -f5 | cut â€“dâ€,â€-f3| cut â€“c 2)</td>â€
+   echo â€œ<td>$(echo $line | cut â€“d: -f5 | cut â€“dâ€,â€-f4| cut â€“c 2)</td>â€
 else
-   echo “<td></td>”
-   echo “<td></td>”
+   echo â€œ<td></td>â€
+   echo â€œ<td></td>â€
 fi
-echo “</tr>”
-done < <(cat ~/students | egrep “^s[0-9]+:*-”)
-echo “</table>”
+echo â€œ</tr>â€
+done <<(cat ~/students | egrep â€œ^s[0-9]+:*-â€)
+echo â€œ</table>â€
 
