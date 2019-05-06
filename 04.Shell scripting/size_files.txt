@@ -1,16 +1,16 @@
 #!/bin/bash
 if [[! -d $1 ]]; then
-   echo “$1 is not a directory”
+   echo â€œ$1 is not a directoryâ€
    exit 1;
 fi
 
 while read line; do
-if[[ $line =~^d+ ]];then
-     dir=$(echo $line | cut –d “ ” –f9)
-     numberofElements=$(ls –la $1/$dir | wc -l)
+if [[ $line =~^d+ ]];then
+     dir=$(echo $line | cut â€“d â€œ â€ â€“f9)
+     numberofElements=$(ls â€“la $1/$dir | wc -l)
      echo $dir $numberofElements
 if [[ $line =~^-+ ]]; then
-     file=$(echo $line | cut –d” ” –f9)
-     fileSize=$(echo $line | cut –d “ ” –f5)
+     file=$(echo $line | cut â€“dâ€ â€ â€“f9)
+     fileSize=$(echo $line | cut â€“d â€œ â€ â€“f5)
 fi
-done <<(ls –l | tr –s “ ”| tail –n +2)
+done << (ls â€“l | tr â€“s â€œ â€| tail â€“n +2)
