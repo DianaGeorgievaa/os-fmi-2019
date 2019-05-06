@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo “<table>”
+   echo ”<th>First Name</th>”
+   echo ”<th>Last Name</th>”
+   echo ”<th>Specialty</th>”
+   echo ”<th>Course</th>”
+   echo ”<th>Group</th>”
+   echo “</tr>”
+
+while read line; do
+   echo “<tr>”
+   echo “<td>$(echo $line | cut –d: -f1 | cut –c 2-6)</td>” 
+   echo “<td>$(echo $line | cut –d: -f5 | cut –d “ ” –f1)</td>” 
+   echo “<td>$(echo $line | cut –d: -f5 | cut –d”” –f2)</td>”
+if [[ $line =~ SI* ]]; then
+   echo “<td>SI</td>”
+else
+   echo “<td>KN</td>”
+fi
+
+if [[ $line =~ [o-9], || $line=~[0-9][a-z] ]]; then
+   echo “<td>$(echo $line | cut –d: -f5 | cut –d”,”-f3| cut –c 2)</td>”
+   echo “<td>$(echo $line | cut –d: -f5 | cut –d”,”-f4| cut –c 2)</td>”
+else
+   echo “<td></td>”
+   echo “<td></td>”
+fi
+echo “</tr>”
+done < <(cat ~/students | egrep “^s[0-9]+:*-”)
+echo “</table>”
+
