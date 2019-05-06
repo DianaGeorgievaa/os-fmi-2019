@@ -27,6 +27,6 @@ else
    echo “<td></td>”
 fi
 echo “</tr>”
-done <<(cat ~/students | egrep “^s[0-9]+:*-”)
+done < <(cat ~/students | egrep “^s[0-9]+:*-”)
 echo “</table>”
 
