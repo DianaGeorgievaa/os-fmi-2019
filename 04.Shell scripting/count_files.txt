@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read –p echo ”Enter directory name: ” dir
+if [[ ! –d $dir ]]; then
+    echo “$dir is not a directory”
+    exit 1
+fi
+
+numbeOfFiles=$(find “$dir” –type f | wc -l)
+numberOfDirectories= $(find “$dir” –type d | wc -l)
+echo “$dir has ${numberOfFiles} files and ${numberOfDirectories} directories”
+exit 0
