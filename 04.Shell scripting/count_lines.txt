@@ -1,0 +1,8 @@
+#!/bin/bash
+
+read –p “Enter string: ” input_string
+for file in "$@"
+do
+    counter=$(grep $input_string $file | wc –l)
+    echo "$file - $counter times”
+done
