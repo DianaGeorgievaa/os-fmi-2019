@@ -1,0 +1,8 @@
+#!/bin/bash
+
+read -p "Enter first file: " firstFile
+read -p "Enter second file: " secondFile
+read -p "Enter third file: " outputFile
+
+cat $firstFile $secondFile | sort > $outputFile
+echo " The result was saved in ${output_file}"
