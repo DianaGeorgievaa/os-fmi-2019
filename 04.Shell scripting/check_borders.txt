@@ -1,0 +1,20 @@
+#!/bin/bash
+
+number=$1
+leftBorder=$2
+rightBorder=$3
+
+num_regex="^[-]?[0-9]+([.][0-9]+)?$"
+if [[ ! $1 =~ $num_regex || ! $leftBorder =~ $num_regex || ! $rightBorder =~ $num_regex ]]; then
+    exit 3
+fi
+
+if [[ $leftBorder -lt $number &&  $number -lt $right ]]; then
+    exit 0
+elif [[ $leftBorder -gt $number && $number -gt $rightBorder ]]; then
+    exit 2
+fi
+
+if [[ $leftBorder -gt $number || $number -gt $rightBorder ]]; then
+    exit 1
+fi
