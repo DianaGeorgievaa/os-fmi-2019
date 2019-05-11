@@ -1,0 +1,15 @@
+#!/bin/bash
+
+children () {
+    ps -e -o pid --ppid "${1}" --no-headers | wc -l
+}
+
+ps -e -o pid,ppid --no-headers | while read PID PPID; do
+    if [[ ${PPID} -eq 0 ]]; then
+        continue
+    fi
+
+    if [ $(children "${PID") -gt $(children "${PPID}") ]; then
+        echo "pid: ${PID}"
+    fi
+done
